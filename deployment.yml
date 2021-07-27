@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-deployment
+  namespace: express
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: express
+  template:
+    metadata:
+      labels:
+        app: express
+    spec:
+      containers:
+        - name: express
+          image: mitsuko0325/express-docker:4.0
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: dockerhub-cred

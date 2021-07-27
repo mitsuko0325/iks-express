@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemonset-test
+  namespace: express
+spec:
+  selector:
+    matchLabels:
+      app: express-ds
+  template:
+    metadata:
+      labels:
+        app: express-ds
+    spec:
+      containers:
+        - name: express-ds
+          image: mitsuko0325/express-docker:4.0
+          imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+        - name: dockerhub-cred
+  

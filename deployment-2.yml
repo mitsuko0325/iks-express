@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express-deployment-2
+  namespace: express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: express-2
+  template:
+    metadata:
+      labels:
+        app: express-2
+    spec:
+      containers:
+        - name: express
+          image: mitsuko0325/express-docker:4.0
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: dockerhub-cred
+      nodeSelector:
+        kubernetes.io/hostname: iks-cluster-test-sarimits-k8s-worker-a6799071d6        
