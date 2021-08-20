@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: dnsutils
+  labels:
+    name: dnsutils
+  namespace: express
+spec:
+  containers:
+  - name: dnsutils
+    image: tutum/dnsutils
+    command:
+    - sleep
+    - "3600"
+  imagePullSecrets: 
+    - name: dockerhub-cred
