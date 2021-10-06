@@ -20,5 +20,3 @@ spec:
             - containerPort: 3000
       imagePullSecrets:
         - name: dockerhub-cred
-      nodeSelector:
-        kubernetes.io/hostname: iks-cluster-test-sarimits-k8s-worker-a6799071d6        
